@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, ButtonGroup } from 'reactstrap'
-import './Home.css'
+import './css/Home.css'
 
 const Home = () => {
   return (
