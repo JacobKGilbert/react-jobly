@@ -4,20 +4,32 @@ import { Navbar, Nav, NavItem } from "reactstrap";
 
 const NavBar = () => {
   return (
-    <Navbar className="navbar navbar-expand-md navbar-dark bg-dark">
+    <Navbar fixed='top' expand='md' color='dark' dark>
       <NavLink to="/" className="navbar-brand">
         Jobly
       </NavLink>
 
-      <Nav className="navbar-nav mr-auto">
-        <NavItem className="nav-item">
+      <Nav navbar>
+        <NavItem>
           <NavLink className="nav-link" to="/companies">
             Companies
           </NavLink>
         </NavItem>
-        <NavItem className="nav-item">
+        <NavItem>
           <NavLink className="nav-link" to="/jobs">
             Jobs
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <Nav navbar className='ms-auto'>
+        <NavItem>
+          <NavLink className="nav-link" to="/login">
+            Log In
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className="nav-link" to="/signup">
+            Sign Up
           </NavLink>
         </NavItem>
       </Nav>
