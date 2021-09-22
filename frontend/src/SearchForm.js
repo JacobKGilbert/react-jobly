@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Form, Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 
-const SearchForm = ({ filter }) => {
-  const INITIAL_STATE = {
-    name: ''
-  }
-  const [formData, setFormData] = useState(INITIAL_STATE)
+const SearchForm = ({ filter, searchType }) => {
+  const [formData, setFormData] = useState({})
+  const INITIAL_STATE = useRef()
+  let inputRef = useRef()
 
   const handleChange = (evt) => {
     const { name, value } = evt.target
@@ -21,15 +20,45 @@ const SearchForm = ({ filter }) => {
     setFormData(INITIAL_STATE)
   }
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <InputGroup>
+  const selectInput = useCallback(() => {
+    if (searchType === 'companies') {
+      INITIAL_STATE.current = {
+        name: '',
+      }
+      setFormData(INITIAL_STATE.current)
+      inputRef.current = (
         <Input
           type="text"
           name="name"
           placeholder="Filter By Name"
           onChange={handleChange}
         />
+      )
+      
+    } else if (searchType === 'jobs') {
+      INITIAL_STATE.current = {
+        title: '',
+      }
+      setFormData(INITIAL_STATE.current)
+      inputRef.current = (
+        <Input
+          type="text"
+          name="title"
+          placeholder="Filter By Title"
+          onChange={handleChange}
+        />
+      )
+    }
+  }, [searchType])
+
+  useEffect(() => {
+    selectInput()
+  }, [selectInput])
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <InputGroup>
+        {inputRef.current}
         <InputGroupAddon addonType="append">
           <Button>Search</Button>
         </InputGroupAddon>
