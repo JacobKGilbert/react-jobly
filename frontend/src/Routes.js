@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home'
 import CompanyList from './CompanyList'
 import CompanyDetail from './CompanyDetail'
-import Jobs from './Jobs'
+import JobList from './JobList'
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 import Profile from './Profile'
@@ -20,7 +20,7 @@ const Routes = () => {
         <CompanyDetail/>
       </Route>
       <Route exact path='/jobs'>
-        <Jobs/>
+        <JobList/>
       </Route>
       <Route exact path='/login'>
         <LoginForm/>
