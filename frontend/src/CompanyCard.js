@@ -8,14 +8,14 @@ const CompanyCard = ({ handle, name, description, logo }) => {
     <div className="CompanyCard">
       <Link to={`/companies/${handle}`} className="text-decoration-none text-body">
         <Card>
-          <div class="row no-gutters">
-            <div class="col-md-10">
+          <div className="row no-gutters">
+            <div className="col-md-10">
               <CardBody>
                 <CardTitle className="text-start fw-bold">{name}</CardTitle>
                 <CardText className="text-start">{description}</CardText>
               </CardBody>
             </div>
-            <div class="col-md-2">
+            <div className="col-md-2">
               <CardBody>
                 <CardImg src={logo} alt={`Logo for ${name}`} />
               </CardBody>
