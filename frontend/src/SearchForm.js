@@ -3,7 +3,7 @@ import { Form, Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 
 const SearchForm = ({ filter }) => {
   const INITIAL_STATE = {
-    query: ''
+    name: ''
   }
   const [formData, setFormData] = useState(INITIAL_STATE)
 
@@ -27,7 +27,6 @@ const SearchForm = ({ filter }) => {
         <Input
           type="text"
           name="name"
-          id="name"
           placeholder="Filter By Name"
           onChange={handleChange}
         />
