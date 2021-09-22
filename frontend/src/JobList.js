@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import JoblyApi from './api'
 import JobCard from './JobCard'
 import SearchForm from './SearchForm'
+import './css/JobList.css'
 
 const JobList = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -29,7 +30,7 @@ const JobList = () => {
   }
 
   return (
-    <div>
+    <div className='JobList'>
       <SearchForm filter={filterJobs} searchType='jobs'/>
       {jobs.map(j => (
         <JobCard
@@ -38,6 +39,7 @@ const JobList = () => {
           title={j.title}
           salary={j.salary}
           equity={j.equity}
+          company={j.companyName}
         />
       ))}
     </div>
