@@ -31,7 +31,7 @@ const CompanyList = () => {
 
   return (
     <div className='CompanyList'>
-      <SearchForm filter={filterCompanies}/>
+      <SearchForm filter={filterCompanies} searchType='companies'/>
       {companies.map(c => (
         <CompanyCard 
           handle={c.handle}
