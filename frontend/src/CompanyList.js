@@ -13,9 +13,11 @@ const CompanyList = () => {
     setCompanies(comps)
   }
 
-  const filterCompanies = async (q) => {
-    let comps = await JoblyApi.getAllCompanies(q)
+  const filterCompanies = async (searchFilters) => {
+    setIsLoading(true)
+    let comps = await JoblyApi.getAllCompanies(searchFilters)
     setCompanies(comps)
+    setIsLoading(false)
   }
 
   useEffect(() => {
