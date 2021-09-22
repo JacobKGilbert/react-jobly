@@ -56,7 +56,7 @@ const SearchForm = ({ filter, searchType }) => {
   }, [selectInput])
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className='mb-4'>
       <InputGroup>
         {inputRef.current}
         <InputGroupAddon addonType="append">
