@@ -5,9 +5,9 @@ import { Button, ButtonGroup } from 'reactstrap'
 import './css/Home.css'
 
 const Home = () => {
-  const user = useContext(UserContext)
+  const { currUser } = useContext(UserContext)
 
-  if (!user) {
+  if (!currUser) {
     return (
       <div className="Home d-flex flex-column justify-content-center align-items-center">
         <h1>Jobly</h1>
@@ -31,7 +31,7 @@ const Home = () => {
       <div className="Home d-flex flex-column justify-content-center align-items-center">
         <h1>Jobly</h1>
         <p>Find the right job, easy.</p>
-        <h3>Welcome, {user.firstName} {user.lastName}!</h3>
+        <h3>Welcome, {currUser.firstName} {currUser.lastName}!</h3>
       </div>
     )
   }
