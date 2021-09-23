@@ -9,14 +9,14 @@ const JobList = () => {
   const [jobs, setJobs] = useState([])
 
   const getJobs = async () => {
-    let comps = await JoblyApi.getAllJobs()
-    setJobs(comps)
+    let allJobs = await JoblyApi.getAllJobs()
+    setJobs(allJobs)
   }
 
   const filterJobs = async (searchFilters) => {
     setIsLoading(true)
-    let comps = await JoblyApi.getAllJobs(searchFilters)
-    setJobs(comps)
+    let filteredJobs = await JoblyApi.getAllJobs(searchFilters)
+    setJobs(filteredJobs)
     setIsLoading(false)
   }
 
