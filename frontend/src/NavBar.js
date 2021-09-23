@@ -4,10 +4,10 @@ import { Navbar, Nav, NavItem, Button } from "reactstrap";
 import UserContext from './UserContext'
 
 const NavBar = ({ logout }) => {
-  const user = useContext(UserContext)
+  const { currUser } = useContext(UserContext)
   let userOptions
 
-  if (!user) {
+  if (!currUser) {
     userOptions = (
       <Nav navbar className="ms-auto">
         <NavItem>
@@ -32,7 +32,7 @@ const NavBar = ({ logout }) => {
         </NavItem>
         <NavItem>
           <Button color='danger' onClick={logout}>
-            Log Out {user.username}
+            Log Out {currUser.username}
           </Button>
         </NavItem>
       </Nav>
