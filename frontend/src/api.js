@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 /** API Class.
@@ -70,6 +71,19 @@ class JoblyApi {
   static async getUser(username) {
     let res = await this.request(`users/${username}`)
     return res.user
+  }
+
+  static async updateUser(data) {
+    const username = data.username
+    delete data.username
+    let res = await this.request(`users/${username}`, data, 'patch')
+    return res.user
+  }
+
+  static async apply(username, jobId) {
+    const data = {}
+    let res = await this.request(`users/${username}/jobs/${jobId}`, data, 'post')
+    return res.applied
   }
 }
 
