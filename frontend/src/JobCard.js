@@ -1,9 +1,53 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Card, CardBody, CardSubtitle, CardTitle, Button, CardText } from 'reactstrap'
 import JoblyApi from './api'
 import './css/JobCard.css'
+import UserContext from './UserContext'
 
 const JobCard = ({ id, title, salary, equity, company }) => {
+  const { currUser, setCurrUser } = useContext(UserContext)
+  const [applied, setApplied] = useState(false)
+
+  useEffect(() => {
+    if (currUser.applications.includes(id)) {
+      setApplied(true)
+    }
+  }, [currUser.applications, id])
+  
+  const apply = async () => {
+    try {
+      const app = await JoblyApi.apply(currUser.username, id)
+      if (app) {
+        setCurrUser({...currUser, applications: [...currUser.applications, id]})
+        setApplied(true)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const applicationBtn = () => {
+    if (applied) {
+      return (
+        <Button
+          color="success"
+          className="position-absolute bottom-0 end-0 m-3"
+          disabled
+        >
+          Applied
+        </Button>
+      )
+    }
+    return (
+      <Button 
+        color="danger" 
+        className="position-absolute bottom-0 end-0 m-3"
+        onClick={apply}
+      >
+        Apply
+      </Button>
+    )
+  }
 
   const showCompany = () => {
     if (company) {
@@ -45,12 +89,7 @@ const JobCard = ({ id, title, salary, equity, company }) => {
           </div>
           <div className="col-md-4">
             <CardBody>
-              <Button
-                color="danger"
-                className="position-absolute bottom-0 end-0 m-3"
-              >
-                Apply
-              </Button>
+              {applicationBtn()}
             </CardBody>
           </div>
         </div>
