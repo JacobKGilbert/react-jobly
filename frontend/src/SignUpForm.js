@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Label, Input, Button } from 'reactstrap'
+import { Link } from 'react-router-dom';
 
 const SignUpForm = ({ signup }) => {
   const INITIAL_STATE = {
@@ -25,44 +26,50 @@ const SignUpForm = ({ signup }) => {
     setFormData(INITIAL_STATE)
   }
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label htmlFor="username">Username</Label>
-      <Input
-        type="text"
-        id="username"
-        name="username"
-        onChange={handleChange}
-      />
-      <Label htmlFor="password">Password</Label>
-      <Input
-        type="password"
-        id="password"
-        name="password"
-        onChange={handleChange}
-      />
-      <Label htmlFor="firstName">First Name</Label>
-      <Input
-        type="text"
-        id="firstName"
-        name="firstName"
-        onChange={handleChange}
-      />
-      <Label htmlFor="lastName">Last Name</Label>
-      <Input
-        type="text"
-        id="lastName"
-        name="lastName"
-        onChange={handleChange}
-      />
-      <Label htmlFor="email">Email</Label>
-      <Input
-        type="email"
-        id="email"
-        name="email"
-        onChange={handleChange}
-      />
-      <Button color="primary">Sign Up</Button>
-    </Form>
+    <div class="col-md-4 position-absolute top-50 start-50 translate-middle">
+      <h3>Sign Up</h3>
+      <Form onSubmit={handleSubmit}>
+        <Label htmlFor="username">Username</Label>
+        <Input
+          type="text"
+          id="username"
+          name="username"
+          onChange={handleChange}
+        />
+        <Label htmlFor="password">Password</Label>
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          onChange={handleChange}
+        />
+        <Label htmlFor="firstName">First Name</Label>
+        <Input
+          type="text"
+          id="firstName"
+          name="firstName"
+          onChange={handleChange}
+        />
+        <Label htmlFor="lastName">Last Name</Label>
+        <Input
+          type="text"
+          id="lastName"
+          name="lastName"
+          onChange={handleChange}
+        />
+        <Label htmlFor="email">Email</Label>
+        <Input type="email" id="email" name="email" onChange={handleChange} />
+        <Button color="primary" className="mt-2">
+          Sign Up
+        </Button>
+        <p className="mb-0 mt-3">Already a user?</p>
+        <Link to="/login">
+          <Button outline color="secondary">
+            Login
+          </Button>
+        </Link>
+      </Form>
+    </div>
   )
 
 }

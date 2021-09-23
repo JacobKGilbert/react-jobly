@@ -23,26 +23,35 @@ const LoginForm = ({ login }) => {
     setFormData(INITIAL_STATE)
   }
 
-  return(
-    <Form onSubmit={handleSubmit}>
-      <Label htmlFor='username'>Username</Label>
-      <Input 
-        type='text' 
-        id='username' 
-        name='username' 
-        onChange={handleChange} 
-      />
-      <Label htmlFor='password'>Password</Label>
-      <Input 
-        type='password' 
-        id='password' 
-        name='password' 
-        onChange={handleChange} 
-      />
-      <Button color='primary'>Log In</Button>
-      <p>Not already a user?</p>
-      <Link to='/signup'><Button outline color='secondary'>Sign Up</Button></Link>
-    </Form>
+  return (
+    <div class="col-md-4 position-absolute top-50 start-50 translate-middle">
+      <h3>Login</h3>
+      <Form onSubmit={handleSubmit}>
+        <Label htmlFor="username">Username</Label>
+        <Input
+          type="text"
+          id="username"
+          name="username"
+          onChange={handleChange}
+        />
+        <Label htmlFor="password">Password</Label>
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          onChange={handleChange}
+        />
+        <Button color="primary" className="mt-2">
+          Log In
+        </Button>
+        <p className="mb-0 mt-3">Not already a user?</p>
+        <Link to="/signup">
+          <Button outline color="secondary">
+            Sign Up
+          </Button>
+        </Link>
+      </Form>
+    </div>
   )
 }
 
