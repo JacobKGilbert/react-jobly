@@ -11,10 +11,10 @@ import UserContext from './UserContext'
 
 const Routes = ({ functions }) => {
   const { signup, login } = functions
-  const user = useContext(UserContext)
+  const { currUser } = useContext(UserContext)
 
   const redirectIfNoUser = () => {
-    if (!user) {
+    if (!currUser) {
       return <Redirect to='/login'/>
     }
   }
