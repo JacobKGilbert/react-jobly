@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={currUser}>
+      <UserContext.Provider value={{currUser, setCurrUser}}>
         <NavBar logout={logout} />
         <main className="pt-5 container">
           <Routes functions={authFuncs} />
